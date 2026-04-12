@@ -1,0 +1,71 @@
+# Phase Gate Report: Phase {{ phase_number }} — {{ phase_name }}
+
+**Date Range:** {{ date_start }} to {{ date_end }}
+**Assessor:** {{ assessor | default("HIO Agent") }}
+**Unit:** {{ unit_name }}
+
+---
+
+## Exit Criteria Checklist
+
+{% for criterion in exit_criteria %}
+### {{ loop.index }}. {{ criterion.description }}
+
+- **Status:** {% if criterion.status == "Met" %}Met{% elif criterion.status == "Not Met" %}Not Met{% else %}Partial{% endif %}
+- **Evidence:** {{ criterion.evidence }}
+{% if criterion.notes %}
+- **Notes:** {{ criterion.notes }}
+{% endif %}
+
+{% endfor %}
+
+## Comparison Board
+
+| Metric | Baseline | Current | Target | Status |
+|--------|----------|---------|--------|--------|
+{% for metric in comparison_board %}
+| {{ metric.name }} | {{ metric.baseline }} | {{ metric.current }} | {{ metric.target }} | {{ metric.status }} |
+{% endfor %}
+
+## 3-Layer Summary
+
+### Layer 1: Current (Delivery)
+
+{{ layer1_current }}
+
+### Layer 2: Outcome (Value)
+
+{{ layer2_outcome }}
+
+### Layer 3: HIO (Harmonization)
+
+{{ layer3_hio }}
+
+## Risks for Next Phase
+
+{% for risk in risks %}
+- **{{ risk.description }}**
+  - Severity: {{ risk.severity }}
+  - Mitigation: {{ risk.mitigation }}
+{% endfor %}
+{% if not risks %}
+No significant risks identified for the next phase.
+{% endif %}
+
+## Recommendation
+
+**Decision:** {{ recommendation.decision }}
+
+**Rationale:** {{ recommendation.rationale }}
+
+{% if recommendation.conditions %}
+**Conditions:**
+
+{% for condition in recommendation.conditions %}
+- {{ condition }}
+{% endfor %}
+{% endif %}
+
+---
+
+*Assessed by {{ agent_name | default("Metrics Monitor") }} on {{ date_end }}*

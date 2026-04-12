@@ -1,0 +1,34 @@
+# Agent Action: {{ action_type }}
+
+**Agent:** {{ agent_name }}
+**Timestamp:** {{ timestamp }}
+
+---
+
+## What Was Done
+
+{{ description }}
+
+## Output / Result
+
+{{ result }}
+
+{% if files_changed %}
+## Files Changed
+
+{% for file in files_changed %}
+- `{{ file }}`
+{% endfor %}
+{% endif %}
+
+{% if next_steps %}
+## Next Steps
+
+{% for step in next_steps %}
+- {{ step }}
+{% endfor %}
+{% endif %}
+
+---
+
+*Comment by {{ agent_name | default("HIO Agent") }}*

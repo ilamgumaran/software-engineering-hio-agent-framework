@@ -1,0 +1,30 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Node (if agent-core is implemented)
+node_modules/
+dist/
+package-lock.json
+
+# Python (if agent-core is implemented)
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Build artifacts
+*.log
+tmp/

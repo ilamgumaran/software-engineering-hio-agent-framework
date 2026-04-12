@@ -1,0 +1,86 @@
+# Harmonization Retrospective: Sprint {{ sprint_number }}
+
+**Unit:** {{ unit_name }}
+**Date:** {{ date }}
+**Facilitator:** {{ facilitator | default("Unit Lead") }}
+
+---
+
+## Emergence Events
+
+{% for event in emergence_events %}
+### {{ event.date }}: {{ event.description }}
+
+- **Who was involved:** {{ event.participants | join(", ") }}
+- **What was unexpected:** {{ event.unexpected }}
+
+{% endfor %}
+{% if not emergence_events %}
+No emergence events recorded this sprint.
+{% endif %}
+
+## Old Pattern Defaults
+
+{% for pattern in old_pattern_defaults %}
+- {{ pattern }}
+{% endfor %}
+{% if not old_pattern_defaults %}
+No old pattern defaults observed this sprint.
+{% endif %}
+
+## Identity Grip Observations
+
+{% for observation in identity_grip_observations %}
+- {{ observation }}
+{% endfor %}
+{% if not identity_grip_observations %}
+No identity grip observations noted.
+{% endif %}
+
+## Growth Reflections
+
+{% for person in growth_reflections %}
+### {{ person.name }}
+
+- **Function Growth Observed:** {{ person.function_growth }}
+- **Bandwidth Expansion Progress:** {{ person.bandwidth_expansion }}
+
+{% endfor %}
+
+## Fulfillment Check
+
+| Person | Score (1-10) | Trend from Last Sprint |
+|--------|-------------|----------------------|
+{% for person in fulfillment_check %}
+| {{ person.name }} | {{ person.score }} | {{ person.trend }} |
+{% endfor %}
+
+{% if average_fulfillment < 7 %}
+**WARNING:** Average fulfillment is {{ average_fulfillment }}/10. Deep-dive recommended before next sprint.
+{% endif %}
+
+## AI Collaboration Assessment
+
+### What Worked
+
+{% for item in ai_collaboration.what_worked %}
+- {{ item }}
+{% endfor %}
+
+### What Didn't Work
+
+{% for item in ai_collaboration.what_didnt_work %}
+- {{ item }}
+{% endfor %}
+
+**Sophistication Level Achieved:** {{ ai_collaboration.sophistication_level | default("Not assessed") }}
+
+## Experiment for Next Sprint
+
+**Description:** {{ experiment.description }}
+**Hypothesis:** {{ experiment.hypothesis }}
+**How to Measure:** {{ experiment.how_to_measure }}
+
+---
+
+*Captured by {{ agent_name | default("Documentation & Knowledge") }} on {{ date }}*

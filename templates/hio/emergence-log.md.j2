@@ -1,0 +1,39 @@
+# Emergence Event: {{ event_id }}
+
+**Date:** {{ date }}
+**Unit:** {{ unit_name }}
+**Sprint:** {{ sprint_number }}
+
+---
+
+## Description
+
+{{ description }}
+
+## Participants
+
+### Human Contributors
+{% for person in human_participants %}
+- **{{ person.name }}** ({{ person.functions | join(", ") }})
+{% endfor %}
+
+### AI Agents Involved
+{% for agent in ai_agents %}
+- **{{ agent.name }}**: {{ agent.contribution }}
+{% endfor %}
+
+## What Emerged
+
+{{ what_emerged }}
+
+## How It Exceeded Individual Capability
+
+{{ exceeded_individual }}
+
+{% if tags %}
+**Tags:** {{ tags | join(", ") }}
+{% endif %}
+
+---
+
+*Logged by {{ logged_by | default("Documentation & Knowledge") }} on {{ date }}*
