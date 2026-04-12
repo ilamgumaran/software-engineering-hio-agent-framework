@@ -193,10 +193,14 @@ See [`DIRECTORY_GUIDE.md`](DIRECTORY_GUIDE.md) for the purpose of every file.
 
 ---
 
-## Built On
+## Foundation
 
-- **[HIO Framework](https://github.com/ilamgumaran/thought-org-with-human-ai-hybrid)** — The Harmonized Intelligence Orchestration methodology
-- **[Multi-Role Software Engineering Agent Framework](https://github.com/ilamgumaran/software-engineer-core-structure)** — The foundational agent architecture this framework evolves
+This framework is built on the **[Harmonized Intelligence Orchestration (HIO) Framework](https://github.com/ilamgumaran/thought-org-with-human-ai-hybrid)** — a comprehensive methodology for designing organizations where humans and AI work as cognitive partners. The HIO framework provides the theoretical foundation, organizational design principles, and transformation methodology that this repo operationalizes into a concrete, forkable agent system.
+
+If you're new to HIO, start with the [main framework](https://github.com/ilamgumaran/thought-org-with-human-ai-hybrid) to understand the philosophy, then return here for the engineering-specific implementation. The [platform engineering org example](https://github.com/ilamgumaran/thought-org-with-human-ai-hybrid/tree/main/examples/platform-engineering-org) is the specific transformation plan this framework executes (Option 2 — 26-week accelerated).
+
+**Also built on:**
+- **[Multi-Role Software Engineering Agent Framework](https://github.com/ilamgumaran/software-engineer-core-structure)** — The foundational agent architecture (9 roles, domain extension system, workflow patterns) that this framework evolves into the HIO model
 
 ---
 
