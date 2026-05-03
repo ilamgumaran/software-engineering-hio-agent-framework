@@ -151,7 +151,34 @@ This framework includes a complete operational guide for a 26-week accelerated H
 | An **engineer** joining a transforming team | [`cognitive-functions/README.md`](cognitive-functions/README.md) then [`workflows/README.md`](workflows/README.md) |
 | An **HIO coach** facilitating the transformation | [`transformation/README.md`](transformation/README.md) then [`transformation/hio-coach-guide.md`](transformation/hio-coach-guide.md) |
 | An **org** adopting the framework for your team | [`CUSTOMIZATION.md`](CUSTOMIZATION.md) then [`org/`](org/) |
+| **Anyone** evaluating fit for a specific project type | [`examples/`](examples/) — 4 worked archetypes |
 | **Anyone** trying to understand a specific file | [`DIRECTORY_GUIDE.md`](DIRECTORY_GUIDE.md) |
+
+---
+
+## Worked Examples
+
+Four concrete project archetypes show the framework in action — using only the agents, cognitive functions, units, workflows, and metrics already in this repo. See [`examples/`](examples/).
+
+| Archetype | Tactical gain | Reversibility | Time horizon |
+|---|---|---|---|
+| [Legacy Migration](examples/legacy-migration/) | Unblock EU regional launch via monolith carve-out | Mostly irreversible | 6 weeks |
+| [New Platform](examples/new-platform/) | End ungoverned AI-agent sprawl with PromptOps MVP | Mostly reversible | 8 weeks |
+| [Experimental](examples/experimental/) | Save ~120 senior eng hrs/mo if AI-augmented code review proves out | Fully reversible | 12 weeks |
+| [Business-Critical](examples/business-critical/) | Protect $8M revenue exposure via 21-day PCI-DSS audit strike | Irreversible | 21 days |
+
+The business-critical example is specifically designed to show the framework producing tactical short-term value **with what you have today** — no procurement, no new hires, no waiting on transformation phases.
+
+---
+
+## Reference Library
+
+External knowledge that informs how the framework is applied. See [`reference/`](reference/).
+
+| Reference | Topic |
+|---|---|
+| [`agent-engineering-7-skills.md`](reference/agent-engineering-7-skills.md) | The 7 technical capabilities for production AI agents (System Design, Tool/Contract Design, Retrieval, Reliability, Security, Eval/Observability, Product Thinking) — orthogonal to the 10 cognitive functions |
+| [`industry-lessons-2024-2026.md`](reference/industry-lessons-2024-2026.md) | What worked and what failed in real AI transformations — Shopify, Meta, Amazon, Klarna, Goldman Sachs, JPMorgan, Duolingo, MIT, McKinsey |
 
 ---
 
@@ -178,6 +205,8 @@ This framework includes a complete operational guide for a 26-week accelerated H
 ├── workflows/               # Harmonized sprint ceremonies
 ├── metrics/                 # 9-category measurement system (3 layers)
 ├── transformation/          # 26-week transformation guide (4 phases)
+├── examples/                # 4 worked project archetypes (legacy, new, experimental, business-critical)
+├── reference/               # External knowledge (7 capabilities, industry lessons)
 ├── org/                     # Organization configuration templates
 ├── plan/                    # Strategic plan documents
 ├── domains/                 # Domain specialization (platform engineering)

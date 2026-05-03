@@ -213,6 +213,32 @@ Prompts for regenerating and extending the framework using AI.
 
 ---
 
+## examples/
+
+Four worked project archetypes that show the framework applied end-to-end with only what's already in the repo.
+
+| File | Purpose |
+|---|---|
+| `README.md` | Index, archetype decision tree, what every example covers |
+| `legacy-migration/README.md` | Order-Hub monolith carve-out — 6 weeks, mostly irreversible decisions |
+| `new-platform/README.md` | PromptOps internal platform MVP — 8 weeks, greenfield, eval-first |
+| `experimental/README.md` | AI-augmented code review pilot — 12 weeks, time-boxed, kill criteria pre-registered |
+| `business-critical/README.md` | PCI-DSS audit remediation strike — 21 days, $8M exposure, AI under senior sign-off |
+
+---
+
+## reference/
+
+External knowledge translated into framework-usable form. References are *not* the framework — they shape how the framework is applied.
+
+| File | Purpose |
+|---|---|
+| `README.md` | How references work, distinction from cognitive functions and agent types |
+| `agent-engineering-7-skills.md` | 7 technical capabilities for production AI agents (System Design, Tool/Contract, Retrieval, Reliability, Security, Eval/Observability, Product Thinking) — orthogonal to the 10 cognitive functions |
+| `industry-lessons-2024-2026.md` | What worked / what failed in real AI transformations — synthesized lessons applied across the framework |
+
+---
+
 ## tools/
 
 AI tool capability guides for the HIO toolchain.

@@ -37,15 +37,20 @@ See `agents/` for full definitions of each agent type.
 
 | Resource | Path |
 |---|---|
-| Cognitive functions | `cognitive-functions/README.md` |
-| Agent definitions | `agents/` |
+| Cognitive functions (10 modes of engagement) | `cognitive-functions/README.md` |
+| Agent definitions (6 agent types) | `agents/` |
+| Agent engineering capabilities (7 technical disciplines) | `reference/agent-engineering-7-skills.md` |
+| Industry transformation lessons | `reference/industry-lessons-2024-2026.md` |
 | Cognitive units | `cognitive-units/` |
 | Workflows | `workflows/` |
 | Metrics | `metrics/` |
+| Worked examples (4 project archetypes) | `examples/` |
 | Org context | `org/profile.md` |
 | Working agreements | `org/working-agreements.md` |
 | Policies | `org/policies.md` |
 | Domain knowledge | `domains/platform-engineering/` |
+
+**Distinction worth holding**: the 10 cognitive functions describe *how a mind engages* (Builder, Problem Framer, Quality Guardian, ...). The 7 agent engineering capabilities describe *what you must know* to build production AI agents (System Design, Tool/Contract Design, Retrieval, Reliability, Security, Eval/Observability, Product Thinking). The 6 agent types compose cognitive functions; engineers exercising them are simultaneously developing the 7 capabilities. All three are independently tracked.
 
 ---
 
