@@ -2,7 +2,7 @@
 
 ## Identity
 
-This skill maps a repository's structure and either drafts a new `AGENTS.md` or validates an existing one against `agent-spec/AGENTS-SPEC-v1.md`. It is the entry point for onboarding a new repo to the family or auditing an existing one.
+This skill maps a repository's structure and either drafts a new `AGENTS.md` or validates an existing one against `agent-spec/AGENTS-SPEC-v1.md` and the public AGENTS.md convention ([`reference/agents-md-and-agentic-ai-foundation.md`](../../reference/agents-md-and-agentic-ai-foundation.md)). It is the entry point for onboarding a new repo to the family or auditing an existing one.
 
 ## Inputs
 
@@ -26,7 +26,8 @@ This skill maps a repository's structure and either drafts a new `AGENTS.md` or 
    - Append the spec version line
    - Submit a draft PR
 7. **If mode = validate:**
-   - Check each required section is present
+   - **Public AGENTS.md compatibility check:** file is markdown, no frontmatter, agent-orienting prose at the top, valid markdown headings
+   - Check each required section is present and in order
    - Check the spec version line
    - Verify trace links resolve
    - Verify HIO routing table has at least five rows
@@ -46,12 +47,13 @@ This skill maps a repository's structure and either drafts a new `AGENTS.md` or 
 - Repo has structural patterns not seen before in the family -- escalate to Interactive for SME judgment
 - Multiple plausible owner-concepts compete -- escalate to OI
 - Existing `AGENTS.md` references a spec version newer than the central -- abort and update central first
+- File is not valid public AGENTS.md (has frontmatter, non-markdown, etc.) -- propose a remediation, do not silently "fix"
 
 ## Example: happy path (draft mode)
 
 Input: repo = `ilamgumaran/thoughtexperiments`, mode = `draft`.
 
-The skill identifies it as Domain content layer, owns Resonance/Contraction/Null vocabulary, related to `thought-org-with-human-ai-hybrid`. It pulls the per-repo dos/don'ts (child-safety overrides), the per-repo HIO routing (story safety), and produces a conformant `AGENTS.md`.
+The skill identifies it as Domain content layer, owns Resonance/Contraction/Null vocabulary, related to `thought-org-with-human-ai-hybrid`. It pulls the per-repo dos/don'ts (child-safety overrides), the per-repo HIO routing (story safety), and produces a conformant `AGENTS.md` that also satisfies the public AGENTS.md convention.
 
 ## Example: stop condition (validate mode)
 

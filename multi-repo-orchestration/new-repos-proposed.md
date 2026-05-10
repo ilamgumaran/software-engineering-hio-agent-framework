@@ -1,6 +1,6 @@
 # Proposed New Repos
 
-Repos recommended to round out the family. Each proposal is a draft for SME review; nothing here is created automatically.
+Repos recommended to round out the family. Each proposal is a draft for SME review; nothing here is created automatically. Updated after the research review (see [`IMPROVEMENTS-FROM-RESEARCH.md`](IMPROVEMENTS-FROM-RESEARCH.md)).
 
 ---
 
@@ -18,11 +18,13 @@ Each proposal answers:
 
 ---
 
-## Proposal 1: `hio-evals`
+## Proposal 1: `hio-evals` (refined to use existing benchmarks)
 
 ### Gap
 
 Agents in the family act on documents and code, but the family has no shared evaluation harness for agent outputs (correctness of generated AGENTS.md, scorecards, classifications, recommendations). Without evals, scoring drifts and improvements are unmeasurable.
+
+Critically, **the family has no benchmark for *multi-repo coordination*** -- the surface this framework is most concerned with. Existing benchmarks cover single-repo software engineering (SWE-bench), general-assistant tasks (GAIA), customer-service interactions (TAU2-bench), and web tasks (WebArena), but multi-repo coordination is novel.
 
 ### Why existing repos cannot absorb
 
@@ -33,9 +35,20 @@ Agents in the family act on documents and code, but the family has no shared eva
 
 ### What it owns
 
-- Eval datasets for the four core agent skills (cartographer, tracer, classifier, scorer)
+Updated after research review:
+
+- **Adopt existing benchmarks** rather than reinvent ([`reference/agent-benchmarks.md`](../../reference/agent-benchmarks.md)):
+  - **SWE-bench Verified** for any HIO unit producing code (Code Co-Creator, Architecture Explorer)
+  - **GAIA** for general-assistant tasks (Analysis Partner, Documentation & Knowledge)
+  - **TAU2-bench** for routing-under-pressure (the agent must respect HIO routing even when the user pushes against it)
+  - **HAL-style dimensions** -- consistency, predictability, robustness, safety, self-awareness -- as the eval-quality framework
+- **Centaur Evaluation structure** ([`reference/centaur-evaluations.md`](../../reference/centaur-evaluations.md)) for human+AI team evals: every eval declares Human / Interface / Scoring
+- **The genuinely-new artifact:** a multi-repo coordination eval, modeled on TAU2-bench's dual-control design but with the repo registry as the shared environment
+  - Setup: simulated user, simulated SME, the four-repo family
+  - Tasks: coordinated change spanning 2-3 repos with realistic constraints
+  - Scoring: did the agent classify correctly (OI/II/Interactive)? Did it follow the traceability protocol? Did it stop at stop conditions? Did the human + AI team produce a better outcome than either alone?
 - A runtime harness that can replay tasks against any agent runtime and measure pass rates
-- Quarterly leaderboard of agent performance
+- Quarterly leaderboard of agent performance, including HAL-style consistency and cost-adjusted accuracy
 
 ### Trace-link relationships
 
@@ -52,20 +65,21 @@ A: target L4 from day one (this is an eval repo; eval-of-evals must be strong). 
 
 ### Cost to set up
 
-- 1-2 weeks OI to scaffold; 4-6 weeks to populate the four core skill eval sets to a baseline coverage
+- 1-2 weeks OI to scaffold; 4-6 weeks to populate the four core skill eval sets to a baseline coverage (now reduced because we adopt existing benchmarks rather than build from scratch)
+- Multi-repo coordination eval is the largest new build: 4-6 weeks OI for a baseline scenario set
 - Dependencies: secure runtime sandbox (Docker, Kubernetes job, or equivalent)
 
 ### Risks
 
 | Risk | Mitigation |
 |---|---|
-| Eval set captures current agent behavior, not desired behavior -- locks in regressions | Pair every eval with a desired-outcome rationale reviewed by SME |
+| Eval set captures current agent behavior, not desired behavior -- locks in regressions | Pair every eval with a desired-outcome rationale reviewed by SME (Centaur Evaluation triple: Human, Interface, Scoring) |
 | Harness runtime requires secrets -- security blast radius | Sandbox the harness; no secret access from agent code paths |
-| Evals become overhead nobody runs | Wire to PR CI as a quarterly gate (not per-PR; would be too slow) |
+| Evals become overhead nobody runs | Wire to PR CI as a quarterly gate (not per-PR; would be too slow); leaderboard publish drives engagement |
 
 ---
 
-## Proposal 2: `agent-spec-registry`
+## Proposal 2: `agent-spec-registry` (refined to expose MCP and consider A2A)
 
 ### Gap
 
@@ -80,7 +94,8 @@ The current markdown catalog is human-shaped and authoritative; a parallel YAML 
 - A YAML or JSON registry of repos: identity, layer, owners, sensitivity tier, trace links
 - A schema for the registry
 - Generators that emit the human-readable `repo-registry.md` from the structured source
-- An MCP server (optional) that exposes the registry to any agent runtime
+- **An MCP server** ([`reference/agent-protocols-mcp-a2a.md`](../../reference/agent-protocols-mcp-a2a.md)) that exposes the registry as MCP resources to any agent runtime -- removes the need for every agent to fetch and parse the markdown
+- Optional: **A2A Agent Cards** for any agent that the family wants to expose externally; with cryptographic signing per A2A v1.2
 
 ### Trace-link relationships
 
@@ -97,7 +112,8 @@ A: L5 from day one (registry is itself agent infrastructure). B: L4 (must reject
 
 - 1 week OI for schema and initial registry
 - 1 week OI for generators
-- 2-3 weeks for MCP server (optional, deferred)
+- 2-3 weeks for MCP server
+- A2A Agent Cards deferred until the family includes runtime agents to be exposed
 
 ### Risks
 
