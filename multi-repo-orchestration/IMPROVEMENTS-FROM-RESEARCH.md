@@ -16,6 +16,7 @@ This document evaluates the multi-repo orchestration framework after surveying e
 | LangGraph, CrewAI, AutoGen, OpenAI Agents SDK, Google ADK, Anthropic Agent SDK, Magentic-One | `reference/multi-agent-frameworks-landscape.md` |
 | SWE-bench, GAIA, TAU-bench, WebArena, HAL Reliability Dashboard | `reference/agent-benchmarks.md` |
 | Constitutional AI (Anthropic), Deliberative Alignment (OpenAI), debate-based safety, multi-agent alignment | `reference/agent-alignment-research.md` |
+| Salesforce Agentforce 360 / Agent Fabric, IBM watsonx Orchestrate, enterprise governance landscape | `reference/enterprise-agent-governance.md` |
 
 ---
 
@@ -41,6 +42,8 @@ Genuine gaps the first PR has, surfaced by the research:
 | 6 HIO agent types were not mapped to Anthropic's 5 control-flow patterns | Anthropic Building Effective Agents | Low -- internal clarity |
 | Cost-adjusted accuracy and N-run consistency missing from `metrics/ai-utilization.md` | 2026 benchmark trend | Low -- not blocking but production-relevant |
 | Shared-constitution framing missing from governance | Constitutional AI, Deliberative Alignment | Low -- conceptual lift, not behavioral change |
+| Strategic posture vs. enterprise vendor stacks not articulated | Salesforce Agentforce, IBM watsonx, vendor landscape | Low -- helpful for HIO adopters who already use a vendor stack |
+| No operational observability surface for runtime agents | Salesforce Session Tracing pattern | Low -- becomes blocking only when family includes runtime agents |
 
 ---
 
@@ -60,11 +63,13 @@ Genuine gaps the first PR has, surfaced by the research:
 ### C. `hio-evals` refined to use existing benchmarks
 
 - `multi-repo-orchestration/new-repos-proposed.md` refined to incorporate SWE-bench, GAIA, TAU2-bench as building blocks; multi-repo eval is the genuinely-new artifact
+- Salesforce Custom Scoring Evals named as a vendor design reference
 
 ### D. MCP / A2A awareness
 
 - `multi-repo-orchestration/tools/README.md` updated to note runtime-agnostic posture and MCP-implementability
 - New-repo proposals updated to call out MCP/A2A surface where relevant
+- Salesforce MCP Bridge named as a design reference for the proposed `agent-spec-registry` MCP server
 
 ### E. Centaur Evaluations citation
 
@@ -79,18 +84,25 @@ Genuine gaps the first PR has, surfaced by the research:
 
 - `multi-repo-orchestration/governance/security-and-safety.md` opens with the framing that the security policy + matrix + AGENTS.md family act as a shared constitution for agents in the family
 
+### H. Enterprise-vendor strategic posture
+
+- New `reference/enterprise-agent-governance.md` documents Salesforce Agent Fabric, IBM watsonx Orchestrate, and the three-posture vendor taxonomy (vertically-integrated, neutral control plane, open-protocol foundation)
+- HIO is positioned as **layered on the open-protocol foundation**, not competing with the vendor stacks; this clarifies how HIO adopters who already use a vendor stack should think about the relationship
+
 ---
 
 ## Improvements deliberately deferred to a third PR (or later)
 
-| Improvement | Why deferred |
-|---|---|
-| Centaur-style measurement instrument added to `metrics/harmonization.md` | Requires SME design choices about which tasks to use as the measurement set |
-| HAL dimensions (consistency, predictability, robustness, safety, self-awareness) added to `metrics/ai-utilization.md` | Requires SME calibration of thresholds |
-| Anthropic-pattern sidebar added to `agents/README.md` | The 5 patterns describe control flow; existing 6 agents describe role -- sidebar is helpful but not load-bearing |
-| MCP server implementations of the three tool specs | Implementation work, not spec work |
-| A2A signed-agent-card adoption when family includes runtime agents | No runtime agents in family yet |
-| Re-scoring after these changes land | Quarterly cadence per `governance/sme-update-workflow.md` |
+| Improvement | Why deferred | Source |
+|---|---|---|
+| Centaur-style measurement instrument added to `metrics/harmonization.md` | Requires SME design choices about which tasks to use as the measurement set | Centaur Evaluations |
+| HAL dimensions (consistency, predictability, robustness, safety, self-awareness) added to `metrics/ai-utilization.md` | Requires SME calibration of thresholds | HAL benchmark |
+| Anthropic-pattern sidebar added to `agents/README.md` | The 5 patterns describe control flow; existing 6 agents describe role -- sidebar is helpful but not load-bearing | Anthropic patterns |
+| MCP server implementations of the three tool specs | Implementation work, not spec work | MCP |
+| A2A signed-agent-card adoption when family includes runtime agents | No runtime agents in family yet | A2A |
+| `multi-repo-orchestration/governance/observability.md` -- minimum trace/audit surface for runtime agents | Becomes blocking only when family includes runtime agents | Salesforce Session Tracing |
+| A/B Testing deferred proposal for alternate versions of `AGENTS.md` or skills | Premature without evidence of need | Salesforce A/B Testing |
+| Re-scoring after these changes land | Quarterly cadence per `governance/sme-update-workflow.md` | Internal |
 
 ---
 
@@ -119,6 +131,7 @@ After: the same framework, **explicitly compatible with**:
 - Stanford Centaur Evaluations (the routing matrix has academic backing)
 - Anthropic's effective-agent patterns and Microsoft's Magentic-One orchestrator-worker model (the agent topology is named, not implicit)
 - SWE-bench, GAIA, TAU-bench, WebArena, HAL (the eval proposal uses standard benchmarks plus one new multi-repo eval)
+- Salesforce Agentforce 360 / Agent Fabric and IBM watsonx Orchestrate as vendor-stack design references (HIO sits above any of them as the human+AI collaboration layer)
 
 ---
 

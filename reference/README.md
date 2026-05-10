@@ -20,6 +20,7 @@ Each reference is read once, translated into framework concepts, and then linked
 | [multi-agent-frameworks-landscape.md](multi-agent-frameworks-landscape.md) | Vendor / open-source survey | LangGraph, CrewAI, AutoGen, OpenAI Swarm/Agents SDK, Google ADK, Anthropic Agent SDK, Magentic-One | `tools/` per-tool guides, `agents/`, future `agent-core/` |
 | [agent-benchmarks.md](agent-benchmarks.md) | Benchmarks | SWE-bench, GAIA, TAU-bench / TAU2-bench, WebArena, HAL Reliability Dashboard | `multi-repo-orchestration/new-repos-proposed.md` (hio-evals), `metrics/ai-utilization.md` |
 | [agent-alignment-research.md](agent-alignment-research.md) | Academic / vendor research | Constitutional AI (Anthropic), Deliberative Alignment (OpenAI), debate-based safety | `governance/security-and-safety.md`, `org/policies.md` |
+| [enterprise-agent-governance.md](enterprise-agent-governance.md) | Vendor and analyst landscape | Salesforce Agentforce 360 / Agent Fabric, IBM watsonx Orchestrate / watsonx.governance, vendor-posture taxonomy | `multi-repo-orchestration/governance/`, `multi-repo-orchestration/new-repos-proposed.md`, future observability policy |
 
 ---
 
