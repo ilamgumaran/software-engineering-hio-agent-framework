@@ -1,17 +1,17 @@
 # Scoring Summary
 
-Comparative agentic and security scores across the HIO repo family. Updated when any scorecard is updated.
+Comparative agentic and security scores across the HIO repo family. Updated when any scorecard is updated. Layered upstream-to-downstream.
 
 ---
 
-## At a glance (baseline, this transformation)
+## At a glance (post-realignment baseline)
 
-| Repo | Agentic | Security | Strongest | Weakest |
-|---|---|---|---|---|
-| `software-engineering-hio-agent-framework` | L4 | L3 | A1, A3, A4 | B3, B4 |
-| `software-engineer-core-structure` | L3 | L3 | A3, B1 | A1, A4 |
-| `thought-org-with-human-ai-hybrid` | L2 | L2 | A3 | A1, A2, B3 |
-| `thoughtexperiments` | L1 | L2 | --- | A1, A2, A3, B3 |
+| # | Layer | Repo | Agentic | Security | Strongest | Weakest |
+|---|---|---|---|---|---|---|
+| 1 | Cognition foundation | `thoughtexperiments` | L2 | L2 | A3 (concept ownership) | A4, B3 |
+| 2 | Generalized HIO framework | `thought-org-with-human-ai-hybrid` | L2 | L2 | A3 | A4, B3 |
+| 3 | Engineering org applied | `software-engineer-core-structure` | L3 | L3 | A3, B1 | A4, B3 |
+| 4 | Day-to-day agentic toolkit | `software-engineering-hio-agent-framework` | L4 | L3 | A1, A3, A4 | B3 |
 
 Levels are floor-of-mean across the five dimensions per axis. See per-repo scorecards for evidence.
 
@@ -25,12 +25,12 @@ Levels are floor-of-mean across the five dimensions per axis. See per-repo score
 
 ---
 
-## Patterns observed
+## Patterns observed (post-realignment)
 
-1. **The operational hub leads** -- `software-engineering-hio-agent-framework` is furthest along on agentic readiness because the framework's own subject is agents.
-2. **The strategic repo is content-shaped, not agent-shaped** -- `thought-org-with-human-ai-hybrid` scores low on A1/A2 not from neglect, but because it is a methodology document. Adding an `AGENTS.md` per the spec lifts it without distorting its purpose.
-3. **Domain content has the steepest curve** -- `thoughtexperiments` is at L1 agentic because there is no orientation file at all. The fix is small in effort but large in score change.
-4. **Security floors at L2-L3** -- no repo is below L2 on security because all are MIT, public, and contain no secrets, but none reach L4+ because protections are not yet enforced by tooling.
+1. **Scores rise as you move downstream** -- expected, since each downstream layer is more concrete and has more agent-relevant detail. The cognition foundation is content-shaped; the day-to-day toolkit is agent-shaped.
+2. **Concept ownership is strong throughout** (A3 = L4 in three of four repos) -- the realignment made ownership explicit at every layer.
+3. **Prompt injection awareness is the consistent weak point** (B3 = L2 in three of four repos) -- the family has no red-team practice yet.
+4. **The toolkit leads on agentic** (L4) and the cognition repo trails (L2) -- this is correct; an agent walking into the toolkit should find more orientation than an agent walking into a cognition-source content repo.
 
 ---
 
@@ -40,10 +40,10 @@ Proposed targets after the first quarterly cycle. SME approval required.
 
 | Repo | Agentic target | Security target | Key actions |
 |---|---|---|---|
-| `software-engineering-hio-agent-framework` | L5 | L4 | Add CI validation for `AGENTS.md` (A1->L5), inventory sensitive surfaces (B2->L4) |
-| `software-engineer-core-structure` | L4 | L4 | Add `AGENTS.md` (A1->L4), add prompt injection notes (B3->L4) |
-| `thought-org-with-human-ai-hybrid` | L3 | L3 | Add `AGENTS.md` (A1->L3), explicit concept ownership labels (A3->L4) |
-| `thoughtexperiments` | L3 | L3 | Add `AGENTS.md` (A1, A2, A3 all to L3), prompt injection guarding for HTML content (B3->L3) |
+| `thoughtexperiments` | L3 | L3 | Add `skills/story-recommender.md` with safety preconditions; CONTRIBUTING.md with child-safety reviewer requirement |
+| `thought-org-with-human-ai-hybrid` | L3 | L3 | Add `prompts/` or `skills/` HIO classifier; CONTRIBUTING.md prompt-injection guidance |
+| `software-engineer-core-structure` | L4 | L4 | Add prompt injection notes; skills system for forks; example instantiated `org/` |
+| `software-engineering-hio-agent-framework` | L5 | L4 | CI validation for `AGENTS.md`; inventory new sensitive surfaces |
 
 ---
 
