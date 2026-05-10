@@ -2,6 +2,8 @@
 
 Default classification for common task signals across the family. Per-repo files can tighten (OI for tasks default-rated II), never relax.
 
+Academic foundation: this matrix is, in form, a routing implementation of a [Centaur Evaluation](../../reference/centaur-evaluations.md). Each row specifies *who participates* (OI, II, Interactive), *what they may see and do* (the dos and don'ts), and *what counts as success* (the stop conditions and downstream review). When questions arise about whether a row is calibrated correctly, fall back to the Centaur Evaluation lens: does this routing produce outcomes the human + AI team could not produce alone?
+
 ---
 
 ## Reading the table
@@ -78,6 +80,19 @@ Default classification for common task signals across the family. Per-repo files
 | Configure agent permissions (MCP tool list) | OI | Permanent capability change | n/a |
 | Audit log review | II | Pattern detection at scale | Anomaly found -- escalate to Interactive then OI |
 
+## Agent-to-agent and protocol tasks
+
+Added after research review (see [`reference/agent-protocols-mcp-a2a.md`](../../reference/agent-protocols-mcp-a2a.md) and [`reference/owasp-top-10-agentic-applications.md`](../../reference/owasp-top-10-agentic-applications.md) -- maps to OWASP categories *Inter-Agent Injection* and *Delegated Trust Abuse*).
+
+| Task signal | Default mode | Why | Stop condition |
+|---|---|---|---|
+| Accept work request from another agent in the family | Interactive | Inter-agent communication is OWASP-flagged surface; signed Agent Cards required if A2A is in use | A2A signed-agent-card not present -- escalate to OI |
+| Agent acts on behalf of a human | II under permission scope | Standard delegation | Permissions exceed user's scope -- escalate to OI |
+| Agent acts on behalf of another agent | OI | Delegated Trust Abuse risk; cannot be reversed if abused | n/a |
+| Add a new MCP server or tool to the family's tool catalog | OI | Supply chain category in OWASP Top 10; permanent capability | n/a |
+| Update an existing MCP server schema | Interactive | Contract change | Compatibility broken -- escalate to OI |
+| Subscribe an agent to long-running events from another agent | Interactive | Resource Exhaustion category | No upper bound or cost cap -- OI |
+
 ---
 
 ## Default for unlisted task signals
@@ -94,3 +109,4 @@ If the task does not appear in any table above, the default is **Interactive**. 
 | Routing security-sensitive changes to II | Slow-burn risk accumulation | Restore the OI floor on the matrix |
 | Skipping the matrix for "obvious" tasks | Drift; same task routed differently in different sessions | Make routing the first step of every PR description |
 | Letting per-repo overrides relax central rules | Erosion of safety floor | Reject the override; tighten only |
+| Treating agent-to-agent work as same risk as agent-to-tool | Misses Inter-Agent Injection and Delegated Trust Abuse risks | Apply the protocol-tasks table; default Interactive or OI |

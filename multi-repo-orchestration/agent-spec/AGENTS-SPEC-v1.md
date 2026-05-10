@@ -4,6 +4,14 @@ The contract every repo in the family follows. A single `AGENTS.md` at the repo 
 
 ---
 
+## Compatibility with the public AGENTS.md convention
+
+This spec is a **superset** of the public AGENTS.md convention stewarded by the Linux Foundation's Agentic AI Foundation (AAIF) -- see [`reference/agents-md-and-agentic-ai-foundation.md`](../../reference/agents-md-and-agentic-ai-foundation.md). Files conforming to this spec are valid public AGENTS.md files; agents that only know the public convention (Codex, Cursor, Windsurf, Kilo Code, Factory, Builder, etc.) read them as orientation files without modification.
+
+The additional sections required by this spec (Family, HIO routing, Trace links, Spec version) are additive markdown that the public convention permits and ignores. Agents aware of this spec get the additional structure for free.
+
+---
+
 ## Required sections
 
 Every `AGENTS.md` MUST include the following sections in this order. Optional sections MAY be added after.
@@ -32,6 +40,8 @@ Spec: AGENTS-SPEC-v1
 ```
 
 Incompatible changes bump the version. Backward-compatible additions reuse the version with a minor suffix (e.g., `v1.1`).
+
+When the public AGENTS.md convention adds required fields (the AAIF working group periodically considers proposals), this spec follows in the next minor version. Track the upstream working group at [agents.md](https://agents.md/).
 
 ---
 
@@ -125,6 +135,7 @@ Before merging an `AGENTS.md` change, verify:
 
 - [ ] All required sections present and in order
 - [ ] Spec version line at the bottom
+- [ ] **Public AGENTS.md compatibility** -- the file remains a valid public AGENTS.md (markdown, no frontmatter, agent-orienting prose)
 - [ ] Dos and don'ts are imperative and falsifiable
 - [ ] HIO routing has at least five task-signal rows
 - [ ] Security boundaries reference central policy, do not restate it
@@ -149,3 +160,12 @@ The `skills/repo-cartographer.md` skill performs this check automatically when r
 ## Reference: minimum viable AGENTS.md
 
 A conformant minimum file is roughly 80 lines. See any of the per-repo `AGENTS.md` files added to sibling repos in the same change as this spec for live examples.
+
+---
+
+## Related references
+
+| Reference | What it adds |
+|---|---|
+| [`reference/agents-md-and-agentic-ai-foundation.md`](../../reference/agents-md-and-agentic-ai-foundation.md) | Public AGENTS.md compatibility, AAIF stewardship |
+| [`reference/agent-protocols-mcp-a2a.md`](../../reference/agent-protocols-mcp-a2a.md) | MCP and A2A integration paths |
