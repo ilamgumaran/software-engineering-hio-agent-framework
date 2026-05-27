@@ -16,12 +16,13 @@ Measurement begins Day 1 of the transformation. Do not wait for perfect instrume
 
 ---
 
-## The 9 Categories
+## The 10 Categories
 
 | Category | Layer | What It Measures | File |
 |---|---|---|---|
 | Current/Legacy | Layer 1 (Current) | Velocity, throughput, backlog health | [current-legacy.md](current-legacy.md) |
 | DORA | Layer 2 (Outcome) | Deployment performance and reliability | [dora.md](dora.md) |
+| Operational Health | Layer 2 (Outcome) | Volume, availability, errors, tickets, testability, merge acceptance | [operational-health.md](operational-health.md) |
 | SPACE/DX | Layer 2 (Outcome) | Developer experience and focus | [space-dx.md](space-dx.md) |
 | Platform Outcomes | Layer 2 (Outcome) | Platform adoption and business impact | [platform-outcomes.md](platform-outcomes.md) |
 | Code Health | Layer 2 (Outcome) | Code quality and maintenance burden | [code-health.md](code-health.md) |
@@ -29,6 +30,19 @@ Measurement begins Day 1 of the transformation. Do not wait for perfect instrume
 | Human Fulfillment | Layer 3 (HIO) | Wellbeing, growth, and purpose alignment | [human-fulfillment.md](human-fulfillment.md) |
 | AI Utilization | Layer 3 (HIO) | Depth and effectiveness of AI agent use | [ai-utilization.md](ai-utilization.md) |
 | Harmonization | Layer 3 (HIO) | Human-AI collaboration and emergence | [harmonization.md](harmonization.md) |
+
+## Traceability to Objectives
+
+Metrics alone don't drive decisions. They must connect to objectives:
+
+```
+tracking/objectives/ → defines WHY we measure
+tracking/use-cases/  → defines WHAT we're building
+tracking/decisions/  → records WHAT we chose and WHY
+metrics/             → measures HOW WELL it's going
+```
+
+See [tracking/README.md](../tracking/README.md) for the full traceability system.
 
 ---
 
